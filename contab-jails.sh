@@ -5,36 +5,34 @@ JAIL_PORTS=/usr/jails/ports
 SECTION=' * * * * * * '
 DELIMITER='------------------------------'
 
-portsnap -p "${JAIL_PORTS}" fetch extract &>/dev/null || { echo "[-] Updating ports tree failed!"; }
+portsnap -p $JAIL_PORTS fetch extract &>/dev/null || echo "[-] Updating ports tree failed!"
 echo "# PORTS TREE UPDATED"
-echo
 
 echo
-echo "$SECTION"
+echo $SECTION
 echo
 
 echo "# VULNERABILITIES"
 echo
 
 for jail in $(jails);do 
-	JID=$(jid ${jail})
-	echo "--- ${jail} ---"
-	jexec ${JID} portaudit -Fda
-	echo "$DELIMITER"
-	echo
+        JID=$(jid $jail)
+        echo "--- ${jail} ---"
+        jexec $JID pkg audit 
+        echo $DELIMITER
 done
 
 echo
-echo "$SECTION"
+echo $SECTION
 echo
 
 echo "# AVAILABLE UPDATES"
 echo
 
 for jail in $(jails);do 
-	JID=$(jid ${jail})
-	echo "--- ${jail} ---"
-	jexec ${JID} portmaster -L --index-only| egrep '(ew|ort) version|total install'
-	echo "$DELIMITER"
-	echo
+        JID=$(jid $jail)
+        echo "--- ${jail} ---"
+        jexec $JID portmaster -L --index-only| egrep '(ew|ort) version|total install'
+        echo $DELIMITER
+        echo
 done
