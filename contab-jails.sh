@@ -1,16 +1,9 @@
 #!/usr/local/bin/zsh
-SHELL=/usr/local/bin/zsh
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin:/root/bin
 JAIL_PORTS=/usr/jails/ports
 SECTION=' * * * * * * '
 DELIMITER='------------------------------'
 
-portsnap -p $JAIL_PORTS fetch extract &>/dev/null || echo "[-] Updating ports tree failed!"
-echo "# PORTS TREE UPDATED"
-
-echo
-echo $SECTION
-echo
+portsnap -p $JAIL_PORTS fetch extract &>/dev/null || echo "Updating ports tree failed!"
 
 echo "# VULNERABILITIES"
 echo
