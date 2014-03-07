@@ -1,5 +1,7 @@
 #!/usr/local/bin/zsh
 JAIL_PORTS=/usr/jails/ports
+SHELL=/usr/local/bin/zsh                                                                                                                                                  
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin
 SECTION=' * * * * * * '
 DELIMITER='------------------------------'
 
