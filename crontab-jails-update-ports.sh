@@ -1,8 +1,7 @@
 #!/usr/local/bin/bash
-# modified for freenas from https://gist.github.com/takeshixx/7487381
 SHELL=/usr/local/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin
-JAIL_PORTS=/mnt/jails/ports
+#JAIL_PORTS=/mnt/jails/ports
 
 #updates shared ports dir that is null mounted into each jail
 #portsnap -p $JAIL_PORTS fetch extract &>/dev/null || echo "Updating ports tree failed!"
