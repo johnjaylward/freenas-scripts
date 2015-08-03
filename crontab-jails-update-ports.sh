@@ -4,7 +4,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin
 #JAIL_PORTS=/mnt/jails/ports
 
 #updates shared ports dir that is null mounted into each jail
-#portsnap -p $JAIL_PORTS fetch extract &>/dev/null || echo "Updating ports tree failed!"
+#portsnap -p $JAIL_PORTS fetch update &>/dev/null || echo "Updating ports tree failed!"
 
 # if you don't have a shared ports mount, then use this.
 # this will take a long time to run for each jail.
