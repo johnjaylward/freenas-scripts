@@ -7,3 +7,5 @@ jexec "${1}" portsnap -p $JAIL_PORTS fetch extract &>/dev/null || (echo "Updatin
 jexec "${1}" pkg update
 jexec "${1}" pkg upgrade
 jexec "${1}" pkg install bash portmaster
+
+[ ! -s /etc/make.conf ] && echo 'WITH_PKGNG=yes' >> /etc/make.conf && pkg2ng
