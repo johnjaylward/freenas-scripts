@@ -2,7 +2,6 @@
 # modified for freenas from https://gist.github.com/takeshixx/7487381
 SHELL=/usr/local/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin
-JAIL_PORTS=/mnt/jails/ports
 DELIMITER='------------------------------'
 
 echo "# AVAILABLE UPDATES"
