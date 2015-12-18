@@ -8,7 +8,12 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin
 
 # if you don't have a shared ports mount, then use this.
 # this will take a long time to run for each jail.
+
 for JID in $(jls -h jid | grep '^[0-9]' | awk '{ print $1 }');do
     jail=$(jls -h jid name | grep "^$JID " | awk '{ print $2 }')
-    jexec $JID portsnap fetch extract update &>/dev/null || echo "Updating ports tree failed for jail ${jail}!"
+    jailpath=$(jls -h jid path | grep "^$JID " | awk '{ print $2 }')
+    echo "#!/usr/local/bin/bash" > "$jailpath/root/updateports.sh"
+    echo "portsnap fetch extract update &>/dev/null || echo \"Updating ports tree failed for jail ${1}!\"" >> "$jailpath/root/updateports.sh"
+    chmod 700 "$jailpath/root/updateports.sh"
+    jexec $JID "/root/updateports.sh" $jail
 done
