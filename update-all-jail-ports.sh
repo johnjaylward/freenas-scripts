@@ -5,6 +5,8 @@ for JID in $(jls -h jid | grep '^[0-9]' | awk '{ print $1 }');do
     echo "-------- updating ${jail} --------"
     #jexec $JID portmaster -y -P -a
 
+    jexec $JID pkg update
+
     jexec $JID portmaster --no-confirm -adw
     jexec $JID portmaster -y -y -d -s
     

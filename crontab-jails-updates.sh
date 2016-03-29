@@ -10,7 +10,7 @@ echo
 for JID in $(jls -h jid | grep '^[0-9]' | awk '{ print $1 }');do
     jail=$(jls -h jid name | grep "^$JID " | awk '{ print $2 }')
     echo "--- ${jail} ---"
-    jexec $JID portmaster -L --index-only| egrep '(ew|ort) version|total install'
+    (jexec $JID /usr/local/sbin/portmaster -L --index-only) | egrep '(ew|ort) version|total install'
     echo $DELIMITER
     echo
 done
